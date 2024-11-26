@@ -6,10 +6,10 @@ from io import BytesIO
 from bottle import response
 
 
-def load_image():
+def load_image(url):
     try:
-        respones = requests.get(url)
-        respones.raise_for_status()
+        response = requests.get(url)
+        response.raise_for_status()
         image_data = BytesIO(response.content)
         img = Image.open(image_data)
         return ImageTk.PhotoImage(img)
